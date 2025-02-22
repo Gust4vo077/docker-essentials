@@ -1,0 +1,17 @@
+services:
+  maria:
+    image: mariadb:latest 
+    restart: no
+    environment:
+      MARIADB_ROOT_PASSWORD: maria
+      MARIADB_USER: maria
+      MARIADB_PASSWORD: maria
+      MARIADB_DATABASE: maria
+
+  adminer:
+    image: adminer
+    restart: no
+    ports:
+      - 8080:8080
+    depends_on:
+      - maria

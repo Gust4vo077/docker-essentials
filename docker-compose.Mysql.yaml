@@ -1,0 +1,23 @@
+services:
+  mysqlBanco:
+    image: mysql
+    restart: no
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: mysql
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    ports:
+      - 3306:3306
+
+  mysqlAdmin:
+    image: phpmyadmin/phpmyadmin
+    restart: no
+    environment:
+      PMA_HOST: mysqlBanco
+      PMA_PORT: 3306
+    ports:
+      - 8080:80
+    depends_on:
+      - mysqlBanco
+  

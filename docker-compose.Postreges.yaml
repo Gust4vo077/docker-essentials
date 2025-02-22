@@ -1,0 +1,23 @@
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: no
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRESQL_DATABASE: postgres
+    ports:
+      - 5432:5432
+
+  postgresUI:
+    image: dpage/pgadmin4
+    restart: no 
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+     - 8041:80
+    depends_on:
+     - postgres
+ 

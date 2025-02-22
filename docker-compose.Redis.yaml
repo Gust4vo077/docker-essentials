@@ -1,0 +1,15 @@
+services:
+  redis:
+    image: redis:7.4.1-alpine
+    ports:
+      - 6379:6379
+    restart: no
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    ports:
+      - 8081:8081
+    environment:
+      - REIS_HDOSTS=local:redis:6379
+    depends_on:
+      - redis
